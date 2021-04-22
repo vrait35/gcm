@@ -1,2 +1,972 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="215088f2-2bd2-494c-b14b-7a99a79329a6" activeEnvironment="Default" name="GcmServiceDeskSA" resourceRoot="" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+<con:soapui-project id="215088f2-2bd2-494c-b14b-7a99a79329a6" activeEnvironment="Default" name="GcmServiceDeskSA" resourceRoot="${projectDir}" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="9baded0e-f04d-47b6-adbb-5a55eae014c4" wsaVersion="NONE" name="GcmServiceDeskSA" type="wsdl" bindingName="{http://schemas.hp.com/SM/7}GcmServiceDeskSA" soapVersion="1_1" anonymous="optional" definition="http://hpsmapp2.ikomekastana.kz:9000/SM/7/GcmServiceDeskSA.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://hpsmapp2.ikomekastana.kz:9000/SM/7/GcmServiceDeskSA.wsdl"><con:part><con:url>http://hpsmapp2.ikomekastana.kz:9000/SM/7/GcmServiceDeskSA.wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://schemas.hp.com/SM/7" xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/  http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:cmn="http://schemas.hp.com/SM/7/Common" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.hp.com/SM/7" version="2021-02-02 Rev 5" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.hp.com/SM/7" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+      <xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="http://www.w3.org/2005/05/xmlmime"/>
+      <xs:import namespace="http://schemas.hp.com/SM/7/Common" schemaLocation="http://HPSMAPP2.ikomekastana.kz:9000/SM/7/Common.xsd"/>
+      <xs:complexType name="GcmServiceDeskSAKeysType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="incident.id" nillable="true" type="cmn:StringType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+        <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+      </xs:complexType>
+      <xs:complexType name="GcmServiceDeskSAInstanceType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OpenTime" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="Description">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="cmn:ArrayType">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Description" type="cmn:StringType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Status" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="Resolution">
+            <xs:complexType>
+              <xs:complexContent>
+                <xs:extension base="cmn:ArrayType">
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Resolution" type="cmn:StringType"/>
+                  </xs:sequence>
+                </xs:extension>
+              </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="CloseTime" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="ID" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="Evaluation" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="Initiator" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="Date" nillable="true" type="cmn:DateTimeType"/>
+          <xs:element minOccurs="0" name="WipTime" nillable="true" type="cmn:StringType"/>
+          <xs:element minOccurs="0" name="attachments" nillable="true" type="cmn:AttachmentsType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+        <xs:attribute name="uniquequery" type="xs:string" use="optional"/>
+        <xs:attribute name="recordid" type="xs:string" use="optional"/>
+        <xs:attribute name="updatecounter" type="xs:long" use="optional"/>
+      </xs:complexType>
+      <xs:complexType name="GcmServiceDeskSAModelType">
+        <xs:sequence>
+          <xs:element name="keys" type="GcmServiceDeskSAKeysType"/>
+          <xs:element name="instance" type="GcmServiceDeskSAInstanceType"/>
+          <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+        </xs:sequence>
+        <xs:attribute name="query" type="xs:string" use="optional"/>
+      </xs:complexType>
+      <xs:element name="RetrieveGcmServiceDeskSARequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="GcmServiceDeskSAModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveGcmServiceDeskSAResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="GcmServiceDeskSAModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveGcmServiceDeskSAKeysListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="GcmServiceDeskSAModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveGcmServiceDeskSAKeysListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="GcmServiceDeskSAKeysType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveGcmServiceDeskSAListRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="keys" type="GcmServiceDeskSAKeysType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute name="updatecounter" type="xs:boolean" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+          <xs:attribute name="attachmentType" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RetrieveGcmServiceDeskSAListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="instance" type="GcmServiceDeskSAInstanceType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+          <xs:attribute name="handle" type="xs:string" use="optional"/>
+          <xs:attribute name="count" type="xs:long" use="optional"/>
+          <xs:attribute name="more" type="xs:boolean" use="optional"/>
+          <xs:attribute name="start" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateGcmServiceDeskSARequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="GcmServiceDeskSAModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateGcmServiceDeskSAResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="GcmServiceDeskSAModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateGcmServiceDeskSARequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="GcmServiceDeskSAModelType"/>
+          </xs:sequence>
+          <xs:attribute name="attachmentInfo" type="xs:boolean" use="optional"/>
+          <xs:attribute name="attachmentData" type="xs:boolean" use="optional"/>
+          <xs:attribute default="true" name="ignoreEmptyElements" type="xs:boolean" use="optional"/>
+          <xs:attribute default="-1" name="updateconstraint" type="xs:long" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateGcmServiceDeskSAResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="GcmServiceDeskSAModelType"/>
+            <xs:element minOccurs="0" name="messages" type="cmn:MessagesType"/>
+          </xs:sequence>
+          <xs:attribute name="status" type="cmn:StatusType" use="required"/>
+          <xs:attribute name="message" type="xs:string" use="required"/>
+          <xs:attribute name="schemaRevisionDate" type="xs:date" use="required"/>
+          <xs:attribute name="schemaRevisionLevel" type="xs:int" use="required"/>
+          <xs:attribute name="returnCode" type="xs:decimal" use="optional"/>
+          <xs:attribute name="query" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="RetrieveGcmServiceDeskSARequest">
+    <part element="ns:RetrieveGcmServiceDeskSARequest" name="RetrieveGcmServiceDeskSARequest"/>
+  </message>
+  <message name="RetrieveGcmServiceDeskSAResponse">
+    <part element="ns:RetrieveGcmServiceDeskSAResponse" name="RetrieveGcmServiceDeskSAResponse"/>
+  </message>
+  <message name="RetrieveGcmServiceDeskSAKeysListRequest">
+    <part element="ns:RetrieveGcmServiceDeskSAKeysListRequest" name="RetrieveGcmServiceDeskSAKeysListRequest"/>
+  </message>
+  <message name="RetrieveGcmServiceDeskSAKeysListResponse">
+    <part element="ns:RetrieveGcmServiceDeskSAKeysListResponse" name="RetrieveGcmServiceDeskSAKeysListResponse"/>
+  </message>
+  <message name="RetrieveGcmServiceDeskSAListRequest">
+    <part element="ns:RetrieveGcmServiceDeskSAListRequest" name="RetrieveGcmServiceDeskSAListRequest"/>
+  </message>
+  <message name="RetrieveGcmServiceDeskSAListResponse">
+    <part element="ns:RetrieveGcmServiceDeskSAListResponse" name="RetrieveGcmServiceDeskSAListResponse"/>
+  </message>
+  <message name="CreateGcmServiceDeskSARequest">
+    <part element="ns:CreateGcmServiceDeskSARequest" name="CreateGcmServiceDeskSARequest"/>
+  </message>
+  <message name="CreateGcmServiceDeskSAResponse">
+    <part element="ns:CreateGcmServiceDeskSAResponse" name="CreateGcmServiceDeskSAResponse"/>
+  </message>
+  <message name="UpdateGcmServiceDeskSARequest">
+    <part element="ns:UpdateGcmServiceDeskSARequest" name="UpdateGcmServiceDeskSARequest"/>
+  </message>
+  <message name="UpdateGcmServiceDeskSAResponse">
+    <part element="ns:UpdateGcmServiceDeskSAResponse" name="UpdateGcmServiceDeskSAResponse"/>
+  </message>
+  <portType name="GcmServiceDeskSA">
+    <operation name="RetrieveGcmServiceDeskSA">
+      <documentation/>
+      <input message="ns:RetrieveGcmServiceDeskSARequest"/>
+      <output message="ns:RetrieveGcmServiceDeskSAResponse"/>
+    </operation>
+    <operation name="RetrieveGcmServiceDeskSAKeysList">
+      <documentation/>
+      <input message="ns:RetrieveGcmServiceDeskSAKeysListRequest"/>
+      <output message="ns:RetrieveGcmServiceDeskSAKeysListResponse"/>
+    </operation>
+    <operation name="RetrieveGcmServiceDeskSAList">
+      <documentation/>
+      <input message="ns:RetrieveGcmServiceDeskSAListRequest"/>
+      <output message="ns:RetrieveGcmServiceDeskSAListResponse"/>
+    </operation>
+    <operation name="CreateGcmServiceDeskSA">
+      <documentation/>
+      <input message="ns:CreateGcmServiceDeskSARequest"/>
+      <output message="ns:CreateGcmServiceDeskSAResponse"/>
+    </operation>
+    <operation name="UpdateGcmServiceDeskSA">
+      <documentation/>
+      <input message="ns:UpdateGcmServiceDeskSARequest"/>
+      <output message="ns:UpdateGcmServiceDeskSAResponse"/>
+    </operation>
+  </portType>
+  <binding name="GcmServiceDeskSA" type="ns:GcmServiceDeskSA">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="RetrieveGcmServiceDeskSA">
+      <soap:operation soapAction="Retrieve" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="RetrieveGcmServiceDeskSAKeysList">
+      <soap:operation soapAction="RetrieveKeysList" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="RetrieveGcmServiceDeskSAList">
+      <soap:operation soapAction="RetrieveList" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateGcmServiceDeskSA">
+      <soap:operation soapAction="Create" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateGcmServiceDeskSA">
+      <soap:operation soapAction="Update" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="GcmServiceDeskSA">
+    <port binding="ns:GcmServiceDeskSA" name="GcmServiceDeskSA">
+      <soap:address location="http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://www.w3.org/2005/05/xmlmime</con:url><con:content><![CDATA[<!--W3C XML Schema defined in the Describing Media Content of Binary Data in XML
+   specification
+     http://www.w3.org/TR/xml-media-types
+
+   Copyright © 2005 World Wide Web Consortium,
+  
+   (Massachusetts Institute of Technology, European Research Consortium for
+   Informatics and Mathematics, Keio University). All Rights Reserved. This
+   work is distributed under the W3C® Software License [1] in the hope that
+   it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+   warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  
+   [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+
+   $Id: xmlmime.xsd,v 1.1 2005/04/25 17:08:35 hugo Exp $-->
+<xs:schema targetNamespace="http://www.w3.org/2005/05/xmlmime" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+  <xs:attribute name="contentType">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:minLength value="3"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="expectedContentTypes" type="xs:string"/>
+  <xs:complexType name="base64Binary">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute ref="xmime:contentType"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="hexBinary">
+    <xs:simpleContent>
+      <xs:extension base="xs:hexBinary">
+        <xs:attribute ref="xmime:contentType"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/Common.xsd</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.hp.com/SM/7/Common" version="2021-02-02 Rev 5" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.hp.com/SM/7/Common" xmlns:cmn="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+  <xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="http://www.w3.org/2005/05/xmlmime"/>
+  <xs:complexType name="StringType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute fixed="String" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DecimalType">
+    <xs:simpleContent>
+      <xs:extension base="xs:decimal">
+        <xs:attribute fixed="Decimal" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BooleanType">
+    <xs:simpleContent>
+      <xs:extension base="xs:boolean">
+        <xs:attribute fixed="Boolean" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateTimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:dateTime">
+        <xs:attribute fixed="DateTime" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:date">
+        <xs:attribute fixed="Date" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:time">
+        <xs:attribute fixed="Time" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DurationType">
+    <xs:simpleContent>
+      <xs:extension base="xs:duration">
+        <xs:attribute fixed="Duration" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="IntType">
+    <xs:simpleContent>
+      <xs:extension base="xs:int">
+        <xs:attribute fixed="Int" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ShortType">
+    <xs:simpleContent>
+      <xs:extension base="xs:short">
+        <xs:attribute fixed="Short" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LongType">
+    <xs:simpleContent>
+      <xs:extension base="xs:long">
+        <xs:attribute fixed="Long" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ByteType">
+    <xs:simpleContent>
+      <xs:extension base="xs:byte">
+        <xs:attribute fixed="Byte" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="FloatType">
+    <xs:simpleContent>
+      <xs:extension base="xs:float">
+        <xs:attribute fixed="Float" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DoubleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:double">
+        <xs:attribute fixed="Double" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Base64Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute fixed="Base64" name="type" type="xs:string" use="required"/>
+        <xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+        <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayType">
+    <xs:attribute fixed="Array" name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="StructureType">
+    <xs:attribute fixed="Structure" name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="AttachmentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute ref="xmime:contentType" use="required"/>
+        <xs:attribute name="href" type="xs:string" use="optional"/>
+        <xs:attribute name="contentId" type="xs:string" use="optional"/>
+        <xs:attribute name="action" type="xs:string" use="optional"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="xs:string" use="required"/>
+        <xs:attribute name="len" type="xs:int" use="optional"/>
+        <xs:attribute name="charset" type="xs:string" use="optional"/>
+        <xs:attribute name="upload.by" type="xs:string" use="optional"/>
+        <xs:attribute name="upload.date" type="xs:string" use="optional"/>
+        <xs:attribute name="attachmentType" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AttachmentsType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="AttachmentType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageType">
+    <xs:simpleContent>
+      <xs:extension base="StringType">
+        <xs:attribute name="severity" type="xs:int" use="optional"/>
+        <xs:attribute name="module" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MessagesType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="message" type="MessageType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="FAILURE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint></con:endpoints><con:operation id="87c302ad-62a2-4cc2-9c8f-a7c780381db7" isOneWay="false" action="Create" name="CreateGcmServiceDeskSA" bindingOperationName="CreateGcmServiceDeskSA" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="de6b88b6-f1ab-42a1-9716-19f2a37fef39" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:CreateGcmServiceDeskSARequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">\r
+         <ns:model query="?">\r
+            <ns:keys query="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="?" uniquequery="?" recordid="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="?" readonly="?">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="?" readonly="?">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="?" readonly="?">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="?" readonly="?">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="?" readonly="?">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="?" readonly="?">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="?" readonly="?">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="?" readonly="?">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="?" readonly="?">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="?" readonly="?">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="?" readonly="?">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/?" href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?">cid:917366651400</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:CreateGcmServiceDeskSARequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="Create"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="48357dd1-38bf-4d78-ae7a-1ef2f0eff1de" isOneWay="false" action="Retrieve" name="RetrieveGcmServiceDeskSA" bindingOperationName="RetrieveGcmServiceDeskSA" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5b809616-c852-4d6c-8820-0513b00f020e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:RetrieveGcmServiceDeskSARequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">\r
+         <ns:model query="?">\r
+            <ns:keys query="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="?" uniquequery="?" recordid="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="?" readonly="?">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="?" readonly="?">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="?" readonly="?">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="?" readonly="?">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="?" readonly="?">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="?" readonly="?">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="?" readonly="?">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="?" readonly="?">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="?" readonly="?">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="?" readonly="?">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="?" readonly="?">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/?" href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?">cid:460113874141</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:RetrieveGcmServiceDeskSARequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="Retrieve"/></con:call></con:operation><con:operation id="86f0b52e-1843-4180-a5b9-2fd1435eba31" isOneWay="false" action="RetrieveKeysList" name="RetrieveGcmServiceDeskSAKeysList" bindingOperationName="RetrieveGcmServiceDeskSAKeysList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7f237058-5fe8-42ee-8ae0-6f5423af6c15" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:RetrieveGcmServiceDeskSAKeysListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">\r
+         <ns:model query="?">\r
+            <ns:keys query="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="?" uniquequery="?" recordid="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="?" readonly="?">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="?" readonly="?">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="?" readonly="?">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="?" readonly="?">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="?" readonly="?">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="?" readonly="?">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="?" readonly="?">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="?" readonly="?">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="?" readonly="?">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="?" readonly="?">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="?" readonly="?">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/?" href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?">cid:237111153901</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:RetrieveGcmServiceDeskSAKeysListRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="RetrieveKeysList"/></con:call></con:operation><con:operation id="1cec76c5-714a-4729-8039-ec17b3958e07" isOneWay="false" action="RetrieveList" name="RetrieveGcmServiceDeskSAList" bindingOperationName="RetrieveGcmServiceDeskSAList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="47362852-8bd4-489f-8e48-c1d678552f88" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:RetrieveGcmServiceDeskSAListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?" attachmentType="?">\r
+         <!--1 or more repetitions:-->\r
+         <ns:keys query="?" updatecounter="?">\r
+            <!--Optional:-->\r
+            <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+         </ns:keys>\r
+      </ns:RetrieveGcmServiceDeskSAListRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="RetrieveList"/></con:call></con:operation><con:operation id="1b9de406-7eb3-486d-b77b-d072321959ac" isOneWay="false" action="Update" name="UpdateGcmServiceDeskSA" bindingOperationName="UpdateGcmServiceDeskSA" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="28f84aad-2de8-49cb-aa15-521c852bccf2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:UpdateGcmServiceDeskSARequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">\r
+         <ns:model query="?">\r
+            <ns:keys query="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="?" uniquequery="?" recordid="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="?" readonly="?">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="?" readonly="?">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="?" readonly="?">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="?" readonly="?">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="?" readonly="?">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="?" readonly="?">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="?" readonly="?">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="?" readonly="?">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="?" readonly="?">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="?" readonly="?">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="?" readonly="?">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/?" href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?">cid:811529495146</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:UpdateGcmServiceDeskSARequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="Update"/></con:call></con:operation></con:interface><con:testSuite id="5d599032-bb02-4e21-bc54-04665d36b8d8" name="GcmServiceDeskSA TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="29adc8ec-8b85-4f85-993a-4feac66677ac" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CreateGcmServiceDeskSA TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="9f5bd1f6-7a92-4a5c-bb2c-26bcec4ca3e4" name="CreateGcmServiceDeskSA"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GcmServiceDeskSA</con:interface><con:operation>CreateGcmServiceDeskSA</con:operation><con:request name="CreateGcmServiceDeskSA" id="d5838267-17b8-4348-938b-292c70ab2ab4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:CreateGcmServiceDeskSARequest attachmentInfo="fgh" attachmentData="hg" ignoreEmptyElements="true" updateconstraint="-1">\r
+         <ns:model query="rtt">\r
+            <ns:keys query="rtt" updatecounter="3">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="2" readonly="false">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="33" uniquequery="34" recordid="2" updatecounter="3">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="5" readonly="false">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="1" readonly="false">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="1" readonly="false">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="1" readonly="false">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="1" readonly="false">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="1" readonly="false">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="1" readonly="false">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="2" readonly="false">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="3" readonly="false">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="4" readonly="false">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="5" readonly="false">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/pdf" href="href1" contentId="1" action="post" name="name1" type="file" len="1" charset="c" upload.by="1" upload.date="21.04.2021" attachmentType="file">cid:169274228643</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:CreateGcmServiceDeskSARequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>AsmartAstana</con:username><con:password>gucCaY2$</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>false</con:preemptive><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="Create" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="2aecd6b5-8946-4ad9-a72c-d58eecdb09d5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RetrieveGcmServiceDeskSA TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="62f95e85-86ce-4695-b026-3da62f4ea92b" name="RetrieveGcmServiceDeskSA"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GcmServiceDeskSA</con:interface><con:operation>RetrieveGcmServiceDeskSA</con:operation><con:request name="RetrieveGcmServiceDeskSA" id="771dc489-7939-4cd3-9e1f-d5e75e4eadc0"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:RetrieveGcmServiceDeskSARequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">\r
+         <ns:model query="?">\r
+            <ns:keys query="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="?" uniquequery="?" recordid="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="?" readonly="?">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="?" readonly="?">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="?" readonly="?">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="?" readonly="?">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="?" readonly="?">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="?" readonly="?">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="?" readonly="?">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="?" readonly="?">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="?" readonly="?">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="?" readonly="?">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="?" readonly="?">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/?" href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?">cid:1064800164229</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:RetrieveGcmServiceDeskSARequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="Retrieve"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="43b15e8e-c50b-43c9-95bd-d49416f7fdb5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RetrieveGcmServiceDeskSAKeysList TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="55a512b2-7d59-4e0c-aa83-4fc07e1dc273" name="RetrieveGcmServiceDeskSAKeysList"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GcmServiceDeskSA</con:interface><con:operation>RetrieveGcmServiceDeskSAKeysList</con:operation><con:request name="RetrieveGcmServiceDeskSAKeysList" id="34355e25-7a33-448f-9898-6a4917759c8d"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:RetrieveGcmServiceDeskSAKeysListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?">\r
+         <ns:model query="?">\r
+            <ns:keys query="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="?" uniquequery="?" recordid="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="?" readonly="?">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="?" readonly="?">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="?" readonly="?">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="?" readonly="?">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="?" readonly="?">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="?" readonly="?">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="?" readonly="?">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="?" readonly="?">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="?" readonly="?">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="?" readonly="?">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="?" readonly="?">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/?" href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?">cid:189750964703</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:RetrieveGcmServiceDeskSAKeysListRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="RetrieveKeysList"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="df94d14b-b4b5-495f-974b-49ee770ffa09" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RetrieveGcmServiceDeskSAList TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="62f42910-b5a7-4fa8-b8fd-0411660d3130" name="RetrieveGcmServiceDeskSAList"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GcmServiceDeskSA</con:interface><con:operation>RetrieveGcmServiceDeskSAList</con:operation><con:request name="RetrieveGcmServiceDeskSAList" id="f3093836-e3e3-4080-8de6-3d100cbd0e0f"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:RetrieveGcmServiceDeskSAListRequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updatecounter="?" handle="?" count="?" start="?" attachmentType="?">\r
+         <!--1 or more repetitions:-->\r
+         <ns:keys query="?" updatecounter="?">\r
+            <!--Optional:-->\r
+            <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+         </ns:keys>\r
+      </ns:RetrieveGcmServiceDeskSAListRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="RetrieveList"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="fbdb2975-d1d9-41c9-a11b-3a3578cbf468" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="UpdateGcmServiceDeskSA TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="2a318e19-c9c0-4a72-9988-7c1910d5ba8d" name="UpdateGcmServiceDeskSA"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GcmServiceDeskSA</con:interface><con:operation>UpdateGcmServiceDeskSA</con:operation><con:request name="UpdateGcmServiceDeskSA" id="f76891d2-7781-4416-a39b-259f4806df38"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns="http://schemas.hp.com/SM/7" xmlns:com="http://schemas.hp.com/SM/7/Common" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ns:UpdateGcmServiceDeskSARequest attachmentInfo="?" attachmentData="?" ignoreEmptyElements="true" updateconstraint="-1">\r
+         <ns:model query="?">\r
+            <ns:keys query="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:incident.id type="String" mandatory="?" readonly="?">?</ns:incident.id>\r
+            </ns:keys>\r
+            <ns:instance query="?" uniquequery="?" recordid="?" updatecounter="?">\r
+               <!--Optional:-->\r
+               <ns:OpenTime type="String" mandatory="?" readonly="?">?</ns:OpenTime>\r
+               <!--Optional:-->\r
+               <ns:Description type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Description type="String" mandatory="?" readonly="?">?</ns:Description>\r
+               </ns:Description>\r
+               <!--Optional:-->\r
+               <ns:Status type="String" mandatory="?" readonly="?">?</ns:Status>\r
+               <!--Optional:-->\r
+               <ns:Resolution type="Array">\r
+                  <!--Zero or more repetitions:-->\r
+                  <ns:Resolution type="String" mandatory="?" readonly="?">?</ns:Resolution>\r
+               </ns:Resolution>\r
+               <!--Optional:-->\r
+               <ns:CloseTime type="String" mandatory="?" readonly="?">?</ns:CloseTime>\r
+               <!--Optional:-->\r
+               <ns:ID type="String" mandatory="?" readonly="?">?</ns:ID>\r
+               <!--Optional:-->\r
+               <ns:Phone type="String" mandatory="?" readonly="?">?</ns:Phone>\r
+               <!--Optional:-->\r
+               <ns:Evaluation type="String" mandatory="?" readonly="?">?</ns:Evaluation>\r
+               <!--Optional:-->\r
+               <ns:Initiator type="String" mandatory="?" readonly="?">?</ns:Initiator>\r
+               <!--Optional:-->\r
+               <ns:Date type="DateTime" mandatory="?" readonly="?">?</ns:Date>\r
+               <!--Optional:-->\r
+               <ns:WipTime type="String" mandatory="?" readonly="?">?</ns:WipTime>\r
+               <!--Optional:-->\r
+               <ns:attachments>\r
+                  <!--Zero or more repetitions:-->\r
+                  <com:attachment xmime:contentType="application/?" href="?" contentId="?" action="?" name="?" type="?" len="?" charset="?" upload.by="?" upload.date="?" attachmentType="?">cid:1209234387530</com:attachment>\r
+               </ns:attachments>\r
+            </ns:instance>\r
+            <!--Optional:-->\r
+            <ns:messages>\r
+               <!--Zero or more repetitions:-->\r
+               <com:message type="String" mandatory="?" readonly="?" severity="?" module="?">?</com:message>\r
+            </ns:messages>\r
+         </ns:model>\r
+      </ns:UpdateGcmServiceDeskSARequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:wsaConfig action="Update"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

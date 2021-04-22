@@ -1,6 +1,7 @@
 ﻿using Microsoft.ServiceFabric.Services.Remoting;
 using ServiceReference1;
 using System;
+using System.IO;
 using System.Net;
 using System.ServiceModel;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace ConsoleApp2
         static async Task Main(string[] args)
         {
             var url = "http://HPSMAPP2.ikomekastana.kz:9000/SM/7/ws";
+            string dataPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName, @"Files\file1.jpg");
+            byte[] bytes = System.IO.File.ReadAllBytes(dataPath);
             var req = new CreateGcmServiceDeskSARequest
             {
                 attachmentData = true,
@@ -24,6 +27,17 @@ namespace ConsoleApp2
                 {
                     instance = new GcmServiceDeskSAInstanceType
                     {
+                        Description = new GcmServiceDeskSAInstanceTypeDescription
+                        {
+                            Description = new StringType[]
+                            {
+                                new StringType
+                                {
+                                    Value="desc1",
+                                    type="description1"
+                                }
+                            }
+                        },
                         Status = new StringType
                         {
                             type = "asd",
@@ -35,10 +49,11 @@ namespace ConsoleApp2
                            new AttachmentType
                            {
                                action="post",
-                               attachmentType="application/pdf",
-                               contentType="application/pdf",
-                               name="anuar",
-                               type="file"
+                               attachmentType="application/jpg",
+                               contentType="image/jpg",
+                               name="anuar1",
+                               type="file",
+                               Value=bytes
                            }
                     },
                         query = "query",
@@ -50,7 +65,7 @@ namespace ConsoleApp2
                     },
                     keys = new GcmServiceDeskSAKeysType
                     {
-                        incidentid = new StringType { type = "sd", Value = "122f" },
+                        incidentid = new StringType { type = "sd1", Value = "122f1" },
                         query = "query",
                         updatecounter = 111,
                         updatecounterSpecified = true
@@ -70,6 +85,7 @@ namespace ConsoleApp2
             _client.ClientCredentials.UserName.UserName = "AsmartAstana";
             _client.ClientCredentials.UserName.Password = "gucCaY2$";
             var res = await _client.CreateGcmServiceDeskSAAsync(req);
+            Console.WriteLine();
         }
     }
 }
