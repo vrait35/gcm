@@ -65,7 +65,7 @@ namespace ConsoleApp2
                     },
                     keys = new GcmServiceDeskSAKeysType
                     {
-                        incidentid = new StringType { type = "sd1", Value = "122f1" },
+                        incidentid = new StringType { type = "sd1", Value = "122f1" }, // при каждом новом запросе обновлять значения
                         query = "query",
                         updatecounter = 111,
                         updatecounterSpecified = true
